@@ -30,9 +30,15 @@ body {
     "area4 area5 area5";
 }
 
+#testgrid > div {
+  padding: 4rem 0 4rem 0;
+  text-align: center;
+  font-size: 2rem; 
+}
+
 #itemA {
   grid-area: area1;
-  background-color: gray;
+  background-color: royalblue;
 }
 
 #itemB {
@@ -47,10 +53,15 @@ body {
 
 #itemD {
   grid-area: area4;
-  background-color: yellow;
+  background-color: chocolate;
 }
 
 #itemE {
   grid-area: area5;
   background-color: darkblue;
+}
+
+#testimg {
+  width: 100%;
+  height: auto;
 }

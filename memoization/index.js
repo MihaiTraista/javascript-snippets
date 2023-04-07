@@ -11,9 +11,9 @@ let fibonacci = function (n) {
 
 // with memoization the function calls itself only 28 times
 
-var memoFibonacci = function(){
+var memoFibonacci = (() => {
 	var memo = [0,1];
-	var fib = function(n){
+	var fib = (n) => {
     counter += 1;
 		var result = memo[n];
 		if(typeof result !== 'number'){
@@ -23,7 +23,7 @@ var memoFibonacci = function(){
 		return result;
 	};
 	return fib;
-}();
+})();
 
 
 for (let i = 1; i <= 10; i += 1){
@@ -32,13 +32,4 @@ for (let i = 1; i <= 10; i += 1){
 
 document.writeln(`Called ${counter} times`);
 
-
-var funInFun = function(){
-	var inner = function(n){
-		return n + 100;
-	};
-	return inner;
-}();
-
-console.log(funInFun(6));
 

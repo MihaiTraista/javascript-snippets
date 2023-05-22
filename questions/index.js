@@ -1,9 +1,14 @@
 //  https://github.com/ganqqwerty/123-Essential-JavaScript-Interview-Questions
 //  revisit Q3, 
 
-let animals = ["eagle", "osprey", "salmon"];
-let k = animal => animal === "salmon";
-
-if(animals.some(k)){
-  console.log("swim");
+function setup() {
+  const removeButtons = document.querySelectorAll(".remove");
+  removeButtons.forEach((b, index) => {
+    b.addEventListener('click', (e) => {
+      const parentDiv = e.target.parentNode;
+      parentDiv.remove();
+    })
+  })
 }
+
+setup();

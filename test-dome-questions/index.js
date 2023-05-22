@@ -1,16 +1,22 @@
-const inDate = "1/2/2023";
+//  Javascript problems from testdome.com
 
-const convert = (inDate) => {
+async function firstSuccessfulPromise(promiseArray) {
+  let result = undefined;
 
-  let datesList = inDate.split("/");
-  datesList = datesList.map(str => str.padStart(2, '0'));
-  datesList = datesList.reverse();
-  datesList[0] += "/";
-  datesList[1] += "/";
+  for (let i = 0; i < promiseArray.length; i++){
 
-  return datesList.join('');
+    try {
+      result = await promiseArray[i];
+      return new Promise((resolve, reject) => resolve(result));
+    } catch (err){
+      console.log("the error is", err)
+    }
+  }
+  return result;
 }
 
-const outDate = convert(inDate);
-console.log(outDate);
+let promise = firstSuccessfulPromise([
+  new Promise((resolve, reject) => reject("bad")), 
+  new Promise((resolve, reject) => resolve("Success!"))]);
+promise.then(result => console.log(result));
 

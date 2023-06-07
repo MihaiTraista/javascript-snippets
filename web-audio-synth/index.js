@@ -6,35 +6,42 @@ let gainNode = null;
 const playButton = document.getElementById("play-pause-button");
 
 playButton.addEventListener("click", () => {
-    if (!audioCtx) {
-      init();
-    }
+  if (!audioCtx) {
+    init();
+  }
 
-    // check if context is in suspended state (autoplay policy)
-    if (audioCtx.state === "suspended") {
-      audioCtx.resume();
-    }
+  // check if context is in suspended state (autoplay policy)
+  if (audioCtx.state === "suspended") {
+    audioCtx.resume();
+  }
 
-    if (playButton.dataset.playing === "false") {
-      playSynth();
-      playButton.dataset.playing = "true";
-    } else if (playButton.dataset.playing === "true") {
-      stopSynth();
-      playButton.dataset.playing = "false";
-    }
+  if (playButton.dataset.playing === "false") {
+    playSynth();
+    playButton.dataset.playing = "true";
+  } else if (playButton.dataset.playing === "true") {
+    stopSynth();
+    playButton.dataset.playing = "false";
+  }
+});
 
-  }, false );
+const freqSlider = document.getElementById("frequency");
+
+freqSlider.addEventListener("change", (e) => {
+  if (oscillator){
+    oscillator.frequency.value = e.target.value;
+  }
+})
 
 function init() {
   audioCtx = new AudioContext();
 
   gainNode = audioCtx.createGain();
-  gainNode.gain.value = 0.25;
+  gainNode.gain.value = 0.15;
 
   const volumeControl = document.getElementById("volume");
   volumeControl.addEventListener('input', function() {
     gainNode.gain.value = volumeControl.value;
-  }, false);  
+  });  
 }
 
 function playSynth() {

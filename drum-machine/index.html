@@ -5,77 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Drum Machine</title>
 </head>
+
 <body style="background-color: #000; color: #AAA">
   <h1>Drum Machine for learning about the Web Audio API</h1>
 
-  <div id="boombox">
-    <div class="boombox-handle"></div>
+  <div class="synth-body">
+    <section class="master-controls">
 
-    <div class="boombox-body">
-      <section class="master-controls">
-        <input
-          type="range"
-          id="volume"
-          class="control-volume"
-          min="0"
-          max="2"
-          value="1"
-          list="gain-vals"
-          step="0.01"
-          data-action="volume"
-        />
-        <datalist id="gain-vals">
-          <option value="0" label="min"></option>
-          <option value="2" label="max"></option>
-        </datalist>
+      <label for="volume">VOL</label>
+      <input
+        type="range"
+        id="volume"
+        min="0"
+        max="1"
+        value="0.25"
+        step="0.01"
+      />
+      
+    </section>
 
-        <label for="volume">VOL</label>
+    <section class="synth-generator">
+      <!-- <audio src="outfoxing.mp3" crossorigin="anonymous"></audio> -->
 
-        <input
-          type="range"
-          id="panner"
-          class="control-panner"
-          list="pan-vals"
-          min="-1"
-          max="1"
-          value="0"
-          step="0.01"
-          data-action="panner"
-        />
-        <datalist id="pan-vals">
-          <option value="-1" label="left"></option>
-          <option value="1" label="right"></option>
-        </datalist>
+      <!-- 			type="audio/mpeg" -->
 
-        <label for="panner">PAN</label>
+      <button 
+        id="play-pause-button"
+        data-playing="false"
+        >Play/Pause
+      </button>
 
-        <button
-          class="control-power"
-          role="switch"
-          aria-checked="false"
-          data-power="on"
-        >
-          <span>On/Off</span>
-        </button>
-      </section>
-
-      <section class="tape">
-        <audio src="outfoxing.mp3" crossorigin="anonymous"></audio>
-
-        <!-- 			type="audio/mpeg" -->
-
-        <button
-          data-playing="false"
-          class="tape-controls-play"
-          role="switch"
-          aria-checked="false"
-        >
-          <span>Play/Pause</span>
-        </button>
-      </section>
-    </div>
-    <!-- boombox-body -->
+    </section>
   </div>
+
 
   <script src="index.js" type="text/javascript"></script>
 </body>
